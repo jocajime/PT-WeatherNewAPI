@@ -1,5 +1,5 @@
-using WeatherNewsAPI.Models;
-namespace WeatherNewsAPI.Services.Interfaces;
+namespace WeatherNewsAPI.News.Interfaces;
+using WeatherNewsAPI.News.Models;
 
 public interface IArticleService
 {

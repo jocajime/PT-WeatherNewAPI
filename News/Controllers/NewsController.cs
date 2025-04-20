@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using WeatherNewsAPI.Models;
-using WeatherNewsAPI.Services.Interfaces;
+using WeatherNewsAPI.News.Models;
+using WeatherNewsAPI.News.Interfaces;
 
-namespace WeatherNewsAPI.Controllers;
+namespace WeatherNewsAPI.News.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

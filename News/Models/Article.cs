@@ -1,4 +1,5 @@
-namespace WeatherNewsAPI.Models;
+namespace WeatherNewsAPI.News.Models;
+
 public class Article
 {
     public Source? Source { get; set; }

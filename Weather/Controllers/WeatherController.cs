@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using WeatherNewsAPI.Models;
-using WeatherNewsAPI.Services.Interfaces;
+using WeatherNewsAPI.Weather.Interfaces;
+using WeatherNewsAPI.Weather.Models;
 
-namespace WeatherNewsAPI.Controllers;
+namespace WeatherNewsAPI.Weather.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -16,7 +16,7 @@ public class WeatherController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<Weather>> GetWeatherByCity([FromQuery] string city)
+    public async Task<ActionResult<WeatherResponse>> GetWeatherByCity([FromQuery] string city)
     {
         if (string.IsNullOrWhiteSpace(city))
         {

@@ -1,4 +1,4 @@
-namespace WeatherNewsAPI.Models;
+namespace WeatherNewsAPI.Models.Search;
 public class SerachHistory
 {
     public string City { get; set; }
