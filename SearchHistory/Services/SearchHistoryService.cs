@@ -5,15 +5,24 @@ using WeatherNewsAPI.Data;
 
 namespace WeatherNewsAPI.SearchHistory.Services;
 
+/// <summary>
+/// Servicio para gestionar las operaciones relacionadas con el historial de búsqueda.
+/// Implementa la interfaz <see cref="ISearchHistoryService"/>.
+/// </summary>
 public class SearchHistoryService : ISearchHistoryService
 {
     private readonly AppDbContext _context;
 
+    /// <summary>
+    /// Inicializa una nueva instancia de la clase <see cref="SearchHistoryService"/>.
+    /// </summary>
+    /// <param name="context">El contexto de base de datos utilizado para acceder al historial de búsqueda.</param>
     public SearchHistoryService(AppDbContext context)
     {
         _context = context;
     }
 
+    /// <inheritdoc />
     public async Task AddEntry(HistoryRecord entry)
     {
         entry.Id = Guid.NewGuid();
@@ -23,11 +32,13 @@ public class SearchHistoryService : ISearchHistoryService
         await _context.SaveChangesAsync();
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<HistoryRecord>> GetAll()
     {
         return await _context.HistoryRecord.OrderByDescending(x => x.SearchDate).ToListAsync();
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<HistoryRecord>> GetByCity(string city)
     {
         return await _context.HistoryRecord
@@ -36,6 +47,7 @@ public class SearchHistoryService : ISearchHistoryService
             .ToListAsync();
     }
 
+    /// <inheritdoc />
     public async Task<IEnumerable<HistoryRecord>> GetByType(string type)
     {
         return await _context.HistoryRecord
@@ -43,5 +55,4 @@ public class SearchHistoryService : ISearchHistoryService
             .OrderByDescending(x => x.SearchDate)
             .ToListAsync();
     }
-
 }
