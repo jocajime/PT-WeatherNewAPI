@@ -20,12 +20,12 @@ Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 - **.NET SDK**: Versión 9.0 o superior.
 - **SQL Server**: Para la base de datos del historial de búsquedas.
 - **Claves de API**:
-    - [OpenWeather API](https://openweathermap.org/api) para datos del clima.
-    - [NewsAPI](https://newsapi.org/) para noticias destacadas.
+      - [OpenWeather API](https://openweathermap.org/api) para datos del clima.
+      - [NewsAPI](https://newsapi.org/) para noticias destacadas.
 
 ## Configuración
 
-### WeatherNewsAPI
+### WeatherNewsAPI Details
 
 1. Configura las claves de API en el archivo `appsettings.json`:
 
@@ -50,7 +50,7 @@ dotnet ef database update --project WeatherNewsAPI
 dotnet run --project WeatherNewsAPI
 ```
 
-### WeatherNewsWeb
+### WeatherNewsWeb Details
 
 1. Configura la URL base de la API en el archivo `appsettings.json` si es necesario:
 
@@ -58,7 +58,7 @@ dotnet run --project WeatherNewsAPI
 "ApiBaseUrl": "https://localhost:5001"
 ```
 
-2. Ejecuta la aplicación web:
+1. Ejecuta la aplicación web:
 
 ```bash
 dotnet run --project WeatherNewsWeb
@@ -80,20 +80,24 @@ dotnet run --project WeatherNewsWeb
 
 ## Tecnologías Utilizadas
 
-### Backend:
+### Backend
+
 - ASP.NET Core 9.0
 - Entity Framework Core
 - Swagger para documentación de la API
 
-### Frontend:
+### Frontend
+
 - Razor Pages
 - Bootstrap
 - jQuery
 
-### Base de Datos:
+### Base de Datos
+
 - SQL Server
 
 ## Pendientes
+
 - [ ] Agregar pruebas unitarias para los servicios y controladores.
 - [ ] Mejorar el manejo de errores en la API.
 - [ ] Implementar autenticación y autorización.

@@ -10,6 +10,15 @@ using WeatherNewsAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    var port = Environment.GetEnvironmentVariable("PORT");
+    if (!string.IsNullOrEmpty(port))
+    {
+        options.ListenAnyIP(int.Parse(port));
+    }
+});
+
 
 builder.Services.AddHttpClient(); // Configura un cliente HTTP para realizar solicitudes externas.
 builder.Services.AddScoped<IWeatherService, WeatherService>(); // Servicio para gestionar información del clima.
