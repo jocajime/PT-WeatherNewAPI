@@ -1,0 +1,61 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <!-- 
+        Sidebar:
+        - Muestra un componente parcial (_SideSearchBar) que incluye:
+            - Un formulario de búsqueda para buscar información por ciudad.
+            - Un historial de búsquedas recientes.
+        - Se pasa el modelo 'SearchHistory' al componente parcial.
+    -->
+    <div class="col-md-3">
+        @await Html.PartialAsync("_SideSearchbar", Model.SearchHistory)
+    </div>
+
+    <!-- 
+        Contenido principal:
+        - Incluye la información del clima y las noticias destacadas.
+    -->
+    <div class="col-md-9">
+
+        <!-- 
+            Zona de temperatura:
+            - Muestra la información del clima actual para la ciudad seleccionada.
+            - Incluye:
+                - Nombre de la ciudad.
+                - Fecha y descripción del clima.
+                - Temperatura actual en grados Celsius.
+        -->
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body d-flex align-items-center justify-content-between">
+                <div>
+                    <h5 class="card-title mb-1">@Model.WeatherInfo.City</h5>
+                    <p class="card-text mb-0">@Model.WeatherInfo.Date.ToString("dddd, dd MMMM yyyy")</p>
+                    <p class="card-text">@Model.WeatherInfo.Description</p>
+                </div>
+                <div class="display-3 fw-bold text-primary">
+                    @Model.WeatherInfo.Temperature°C
+                </div>
+            </div>
+        </div>
+
+        <!-- Separador visual -->
+        <hr class="my-2" style="border-top: 2px solid #7a7a7b;" />
+
+        <!-- 
+            Zona de Noticias:
+            - Muestra un componente parcial (_News) que incluye una lista de noticias destacadas.
+            - Se pasa el modelo 'NewsList' al componente parcial.
+            - La sección tiene un diseño con scroll vertical para manejar listas largas.
+        -->
+        <div class="mb-3" style="overflow-y: scroll; overflow-x: hidden;">
+            @await Html.PartialAsync("_News", Model.NewsList)
+        </div>
+
+    </div>
+</div>
+

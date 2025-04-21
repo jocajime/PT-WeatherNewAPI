@@ -1,0 +1,58 @@
+@model IEnumerable<WeatherNewsWeb.Models.SearchHistoryModel>
+
+<!-- 
+    Componente parcial para mostrar una barra lateral con:
+    - Un formulario de búsqueda para buscar información por ciudad.
+    - Un historial de búsquedas recientes.
+    Modelo esperado: IEnumerable<WeatherNewsWeb.Models.SearchHistoryModel>
+-->
+
+<div class="sidebar bg-light p-3">
+    <!-- 
+        Formulario de búsqueda:
+        - Input: Campo de texto para ingresar el nombre de la ciudad.
+        - Botón: Envía el formulario para realizar la búsqueda.
+        - Script: Permite que al presionar "Enter" en el campo de texto, se active el botón de búsqueda.
+    -->
+    <form class="d-flex mb-3" method="get">
+        <input id="searchInput" class="form-control me-2" type="search" name="city" placeholder="Ciudad" aria-label="Buscar" required />
+        <button id="buscarBtn" type="submit" class="btn btn-outline-primary">Buscar</button>
+        <script>
+            // Script para manejar el evento "Enter" en el campo de búsqueda
+            document.getElementById("searchInput").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    document.getElementById("buscarBtn").click();
+                }
+            });
+        </script>
+    </form>
+    
+    <!-- 
+        Historial de búsquedas:
+        - Muestra una lista de ciudades buscadas previamente.
+        - Cada elemento incluye:
+            - Enlace para buscar nuevamente la ciudad.
+            - Información sobre la cantidad de búsquedas y la última fecha de búsqueda.
+        - Si no hay historial, muestra un mensaje indicando que no hay datos.
+    -->
+    <h5>Historial de Búsquedas</h5>
+    <ul class="list-group">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var search in Model)
+            {
+                <li class="list-group-item">
+                    <a href="/?city=@search.City" class="text-decoration-none text-capitalize">@search.City</a><br />
+                    <small class="text-muted">
+                        Buscado @search.SearchCount veces<br />
+                        Última: @search.SearchDate.ToString("dd MMM yyyy HH:mm")
+                    </small>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item text-muted">No hay historial de búsquedas.</li>
+        }
+    </ul>
+</div>

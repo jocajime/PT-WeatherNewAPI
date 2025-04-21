@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WeatherNewsWeb</title>
+<script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WeatherNewsWeb.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <!-- 
+            Barra de navegación:
+            - Incluye el logo y el nombre de la aplicación.
+            - El enlace principal redirige a la página de inicio.
+        -->
+        <nav class="navbar navbar-light bg-light px-4 mb-4">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/img/WeatherNewsLogo.png" width="40" height="40" class="me-2" alt="WeatherNews Logo" />
+                <strong class="fs-4">WeatherNews</strong>
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+                <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+                <div class="container">
+            &copy; 2025 - WeatherNews - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- 
+        Scripts JavaScript:
+        - jQuery: Biblioteca JavaScript para manipulación del DOM.
+        - Bootstrap: Funcionalidades interactivas del framework.
+        - site.js: Scripts personalizados del proyecto.
+        - RenderSectionAsync("Scripts"): Permite incluir scripts adicionales en páginas específicas.
+    -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
