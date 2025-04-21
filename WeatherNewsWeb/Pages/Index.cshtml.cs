@@ -50,8 +50,9 @@ public class IndexModel : PageModel
     private async Task<WeatherInfoModel> ObtenerClimaAsync(string city)
     {
         using var httpClient = new HttpClient();
+        var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL");
         var encodedCity = Uri.EscapeDataString(city);
-        var url = $"https://localhost:5001/api/Weather?city={encodedCity}";
+        var url = $"{baseUrl}/api/Weather?city={encodedCity}";
 
         var response = await httpClient.GetAsync(url);
 
@@ -72,8 +73,9 @@ public class IndexModel : PageModel
     private async Task<List<NewsModel>> ObtenerNoticiasAsync(string city)
     {
         using var httpClient = new HttpClient();
+        var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL");
         var encodedCity = Uri.EscapeDataString(city);
-        var url = $"https://localhost:5001/api/news?city={encodedCity}";
+        var url = $"{baseUrl}/api/news?city={encodedCity}";
 
         var response = await httpClient.GetAsync(url);
 
@@ -93,7 +95,8 @@ public class IndexModel : PageModel
     private async Task<List<SearchHistoryModel>> ObtenerHistorialAsync()
     {
         using var httpClient = new HttpClient();
-        var url = $"https://localhost:5001/api/SearchHistory/all";
+        var baseUrl = Environment.GetEnvironmentVariable("API_BASE_URL");
+        var url = $"{baseUrl}/api/SearchHistory/all";
         var response = await httpClient.GetAsync(url);
 
         if (response.IsSuccessStatusCode)

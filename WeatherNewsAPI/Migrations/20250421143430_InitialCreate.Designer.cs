@@ -12,7 +12,7 @@ using WeatherNewsAPI.Data;
 namespace WeatherNewsAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250420212832_InitialCreate")]
+    [Migration("20250421143430_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
