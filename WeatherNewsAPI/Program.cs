@@ -47,11 +47,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger(); // Habilita Swagger en el entorno de desarrollo.
-    app.UseSwaggerUI(); // Habilita la interfaz de usuario de Swagger.
-}
+
+app.UseSwagger(); // Habilita Swagger 
+app.UseSwaggerUI(); // Habilita la interfaz de usuario de Swagger.
+
 
 app.UseHttpsRedirection(); // Redirige automáticamente las solicitudes HTTP a HTTPS.
 
